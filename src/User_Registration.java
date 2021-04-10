@@ -51,6 +51,18 @@ public class User_Registration {
         // matched the ReGex
         return m.matches();
     }
+    public static boolean isValidPassword(String pass) {
+        // Regex to check valid Email.
+        String regex = ("^[A-Za-z]{8,20}$");
+        // Compile the ReGex
+        Pattern p = Pattern.compile(regex);
+        if (pass == null) {
+            return false;
+        }
+        Matcher m = p.matcher(pass);
+        // matched the ReGex
+        return m.matches();
+    }
 
        public static void main(String[] args) {
             // Test UseCase: 2
@@ -63,9 +75,12 @@ public class User_Registration {
            String email = sc.nextLine();
            System.out.println("Enter Mobile Number:");
            String mobNo = sc.nextLine();
+           System.out.println("Enter Password:");
+           String pass = sc.nextLine();
            System.out.println(isValidFirstName(fname));
            System.out.println(isValidLastName(lname));
            System.out.println(isValidEmail(email));
            System.out.println(isValidmobNo(mobNo));
+           System.out.println(isValidPassword(pass));
         }
 }
