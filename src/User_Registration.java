@@ -29,7 +29,7 @@ public class User_Registration {
     }
     public static boolean isValidEmail(String email) {
       // Regex to check valid Email.
-      String regex = ("^(.+)@(.+)$");
+      String regex = ("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$");
       // Compile the ReGex
       Pattern p = Pattern.compile(regex);
       if (email == null) {
@@ -51,9 +51,20 @@ public class User_Registration {
         // matched the ReGex
         return m.matches();
     }
+    //UC-5-6-7-8
     public static boolean isValidPassword(String pass) {
         // Regex to check valid Email.
-        String regex = ("^[A-Za-z]{8,20}$");
+        String regex ="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$";
+        //^                                   # start of line
+        //  (?=.*[0-9])                       # positive lookahead, digit [0-9]
+        //  (?=.*[a-z])                       # positive lookahead, one lowercase character [a-z]
+        //  (?=.*[A-Z])                       # positive lookahead, one uppercase character [A-Z]
+        //  (?=.*[!@#&()–[{}]:;',?/*~$^+=<>]) # positive lookahead, one of the special character in this [..]
+        //  .                                 # matches anything
+        //  {8,20}                            # length at least 8 characters and maximum of 20 characters
+        //$                                   # end of line
+//        For example, b(?=c) matches a b that is followed by a c. (positive lookahead)
+//        For example, b(?!c) matches a b that is NOT followed by a c. (negative lookahead)
         // Compile the ReGex
         Pattern p = Pattern.compile(regex);
         if (pass == null) {
